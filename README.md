@@ -138,10 +138,13 @@ This is done to ensure repeatability and because file system provide alot of var
 ### Benchmark-live.coffee
 
 Live benchmark will use Atom Scandal to sort this folder. For this you need to install scandal. You can also install a bunch of other stuff to make more file in the benchmark.
+The file can be called with an argument to specify a path to scan (Default is project folder).
 
 ### Benchmark-record.coffee
 
 Record benchmark will produce the data file for main benchmark.
+The file can be called with an argument to specify a path to scan (Default is project folder).
+
 
 ### Stats.coffee
 

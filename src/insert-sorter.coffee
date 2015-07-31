@@ -67,11 +67,15 @@ module.exports =
         list.push(item)
         return 0
 
-      #Optimistic insert ( globally sorted)
+      # Optimistic insert ( globally sorted)
       if compareFn(item, list[n - 1]) >= 0
         list.push(item)
         return n
 
+      # Optimistic insert ( local sequence )
+      # Bet that next insert is close to the last one. (hint)
+      # Doing a pivot step  give better benchmark test
+      # than trying to insert right after
       if hint > -1 and compareFn(item, list[hint]) >= 0
         insertPoint = binarySearch(item, list, -1, hint, compareFn)
       else
