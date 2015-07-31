@@ -1,0 +1,9 @@
+.npmignore
+*.coffee
+script/
+.idea/
+.DS_Store
+npm-debug.log
+.travis.yml
+appveyor.yml
+benchmark/
