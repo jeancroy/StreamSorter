@@ -247,13 +247,12 @@ module.exports =
 
       pivot = Math.floor(0.5 * (start + stop))
       Apv = A[pivot]
-      cmp = -1
 
-      while start < pivot and cmp isnt 0
+      while start < pivot
 
         # Half the range start..stop depending on how ref compare to pivot value
         cmp = compareFn(ref, Apv)
-        if( cmp <= 0 ) then stop = pivot # Ref is in the first half of start..stop
+        if( cmp < 0 ) then stop = pivot # Ref is in the first half of start..stop
         else start = pivot # Ref is in the second half of start..stop
 
         # Get next pivot position and it's value
