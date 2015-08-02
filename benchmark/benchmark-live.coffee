@@ -35,8 +35,11 @@ class Benchmark
         queue.shift().apply(@)
 
     @run = =>
-      warmUp = 5
-      nbRuns = 10
+      warmUp = 4
+      nbScan = 2
+      nbRuns = 4
+      nbRepeat = 3
+
 
       #
       # Warm UP
@@ -69,36 +72,39 @@ class Benchmark
       #
       # Timed Run 1
       #
+      k = nbRepeat
+      while(k--)
 
-      i = nbRuns
-      while(i--)
-        queue.push(step1)
+        i = nbScan
+        while(i--)
+          queue.push(scan_time)
 
-      queue.push(step1Close)
+        i = nbRuns
+        while(i--)
+          queue.push(step1)
 
-      i = nbRuns
-      while(i--)
-        queue.push(scan_time)
+        queue.push(step1Close)
 
-      i = nbRuns
-      while(i--)
-        queue.push(step2)
+        i = nbScan
+        while(i--)
+          queue.push(scan_time)
 
-      queue.push(step2Close)
+        i = nbRuns
+        while(i--)
+          queue.push(step2)
 
-      i = nbRuns
-      while(i--)
-        queue.push(scan_time)
+        queue.push(step2Close)
 
-      i = nbRuns
-      while(i--)
-        queue.push(step3)
+        i = nbScan
+        while(i--)
+          queue.push(scan_time)
 
-      queue.push(step3Close)
+        i = nbRuns
+        while(i--)
+          queue.push(step3)
 
-      i = nbRuns
-      while(i--)
-        queue.push(scan_time)
+        queue.push(step3Close)
+
 
       #
       # END of benchmark, show stat

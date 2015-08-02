@@ -16,10 +16,19 @@ benchmark = (data) ->
   bSorted = []
   iSorted = []
 
-  nbRuns = 10
+  nbRuns = 5
   nbRepeat = 10
 
-  while(nbRepeat--)
+  k = -1
+  while(++k <= nbRepeat)
+
+    # Do one extra untimed warm-up run
+    # By un-timed we mean time but discard.
+    if(k == 1)
+      sortArrayStat.reset()
+      sortBatchStat.reset()
+      sortInsertStat.reset()
+
 
     #Array.sort()
     i = nbRuns
