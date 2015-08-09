@@ -51,13 +51,9 @@ class Benchmark
       while(i--)
         queue.push(step1)
 
-      queue.push(step1Close)
-
       i = warmUp
       while(i--)
         queue.push(step2)
-
-      queue.push(step2Close)
 
       i = warmUp
       while(i--)
@@ -70,7 +66,7 @@ class Benchmark
       queue.push(resetStat)
 
       #
-      # Timed Run 1
+      # Timed Run 1..k
       #
       k = nbRepeat
       while(k--)
@@ -222,11 +218,12 @@ class Benchmark
       console.log("====================")
       scan_time = scanningStat.avg()
 
-      console.log("Array.sort():  #{(scanSortArrayStat.avg() - scan_time).toFixed(3)} ms +- #{(1.96 * StatTimer.addErrors(scanningStat,
+      c95 = StatTimer.conf95(0.5 * (scanningStat.runs() + scanSortArrayStat.runs()))
+      console.log("Array.sort():  #{(scanSortArrayStat.avg() - scan_time).toFixed(3)} ms +- #{(2 * StatTimer.addErrors(scanningStat,
         scanSortArrayStat)).toFixed(3)}")
-      console.log("Batch sort:  #{(scanSortBatchStat.avg() - scan_time).toFixed(3)} ms +- #{(1.96 * StatTimer.addErrors(scanningStat,
+      console.log("Batch sort:  #{(scanSortBatchStat.avg() - scan_time).toFixed(3)} ms +- #{(2 * StatTimer.addErrors(scanningStat,
         scanSortBatchStat)).toFixed(3)}")
-      console.log("Insert sort:  #{(scanSortInsertStat.avg() - scan_time).toFixed(3)} ms +- #{(1.96 * StatTimer.addErrors(scanningStat,
+      console.log("Insert sort:  #{(scanSortInsertStat.avg() - scan_time).toFixed(3)} ms +- #{(2 * StatTimer.addErrors(scanningStat,
         scanSortInsertStat)).toFixed(3)}")
 
 
